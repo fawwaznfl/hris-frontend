@@ -1,0 +1,93 @@
+import { useEffect, useState } from "react";
+
+interface DualBarValueProps {
+  title: string;
+
+  count: number;
+  countSuffix: string;
+  onCountChange?: (val: number) => void;
+
+  amount: number;
+  amountLabel: string;
+  onAmountChange?: (val: number) => void;
+}
+
+export default function DualBarValue({
+  title,
+  count,
+  countSuffix,
+  amount,
+  amountLabel,
+  onCountChange,
+  onAmountChange,
+}: DualBarValueProps) {
+  const [countDisplay, setCountDisplay] = useState("");
+  const [amountDisplay, setAmountDisplay] = useState("");
+
+  useEffect(() => {
+    setCountDisplay(count > 0 ? String(count) : "");
+  }, [count]);
+
+  useEffect(() => {
+    setAmountDisplay(amount > 0 ? amount.toLocaleString("id-ID") : "");
+  }, [amount]);
+
+  return (
+    <div className="flex flex-col space-y-3">
+      <span className="text-sm font-medium text-gray-700">{title}</span>
+
+      {/* BAR ATAS — COUNT */}
+      <div className="flex overflow-hidden rounded-xl border bg-gray-100">
+        {onCountChange ? (
+          <input
+            type="text"
+            inputMode="numeric"
+            placeholder="0"
+            value={countDisplay}
+            onChange={(e) => {
+              const raw = e.target.value.replace(/\D/g, "");
+              setCountDisplay(raw);
+              onCountChange(raw ? Number(raw) : 0);
+            }}
+            className="flex-1 bg-orange-400 px-4 py-2 text-black outline-none"
+          />
+        ) : (
+          <div className="flex-1 bg-orange-400 px-4 py-2 text-black">
+            {count.toLocaleString("id-ID")}
+          </div>
+        )}
+
+        <div className="bg-gray-200 px-4 py-2 text-gray-700 whitespace-nowrap">
+          {countSuffix}
+        </div>
+      </div>
+
+      {/* BAR BAWAH — AMOUNT */}
+      <div className="flex overflow-hidden rounded-xl border bg-gray-100">
+        {onAmountChange ? (
+          <input
+            type="text"
+            inputMode="numeric"
+            placeholder="0"
+            value={amountDisplay}
+            onChange={(e) => {
+              const raw = e.target.value.replace(/\D/g, "");
+              const num = Number(raw) || 0;
+              setAmountDisplay(raw ? num.toLocaleString("id-ID") : "");
+              onAmountChange(num);
+            }}
+            className="flex-1 bg-white px-4 py-2 text-black outline-none"
+          />
+        ) : (
+          <div className="flex-1 bg-white px-4 py-2 text-black">
+            {amount.toLocaleString("id-ID")}
+          </div>
+        )}
+
+        <div className="bg-gray-200 px-4 py-2 text-gray-700 whitespace-nowrap">
+          {amountLabel}
+        </div>
+      </div>
+    </div>
+  );
+}

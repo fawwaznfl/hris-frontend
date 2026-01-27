@@ -1,0 +1,249 @@
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import PageMeta from "../../components/common/PageMeta";
+import PageHeader from "../../PageHeader";
+import ComponentCard from "../../components/common/ComponentCard";
+import api from "../../api/axios";
+import Swal from "sweetalert2";
+import Label from "../../components/form/Label";
+import Input from "../../components/form/input/InputField";
+
+interface PegawaiForm {
+  name: string;
+  username: string;
+  email: string;
+  telepon: string;
+  divisi_id: number | null;
+  lokasi_id: number | null;
+  role_id: number | null;
+  dashboard_type: string;
+  status: string | null;
+  company_id: number | null;
+}
+
+export default function EditPegawai() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+
+  const [formData, setFormData] = useState<PegawaiForm>({
+    name: "",
+    username: "",
+    email: "",
+    telepon: "",
+    divisi_id: null,
+    lokasi_id: null,
+    role_id: null,
+    dashboard_type: "",
+    status: "",
+    company_id: null,
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
+    // Convert number fields
+    if (["divisi_id", "lokasi_id", "role_id", "company_id"].includes(name)) {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value === "" ? null : Number(value),
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const fetchDetail = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await api.get(`/pegawais/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const data = res.data;
+
+      setFormData({
+        name: data.name ?? "",
+        username: data.username ?? "",
+        email: data.email ?? "",
+        telepon: data.telepon ?? "",
+        divisi_id: data.divisi_id ?? null,
+        lokasi_id: data.lokasi_id ?? null,
+        role_id: data.role_id ?? null,
+        dashboard_type: data.dashboard_type ?? "",
+        status: data.status ?? "",
+        company_id: data.company_id ?? null,
+      });
+
+    } catch (err) {
+      console.error("Error fetch pegawai detail", err);
+      Swal.fire("Error", "Gagal memuat data pegawai", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setSaving(true);
+
+    try {
+      const token = localStorage.getItem("token");
+
+      await api.put(`/pegawais/${id}`, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      Swal.fire("Sukses", "Data pegawai berhasil diperbarui", "success");
+      navigate("/pegawai");
+    } catch (err: any) {
+      console.error(err);
+
+      if (err.response?.status === 422) {
+        Swal.fire(
+          "Validasi Gagal",
+          JSON.stringify(err.response.data.errors, null, 2),
+          "error"
+        );
+      } else {
+        Swal.fire("Error", "Gagal menyimpan perubahan", "error");
+      }
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDetail();
+  }, []);
+
+  return (
+    <>
+      <PageMeta title="Edit Pegawai" description="Form edit data pegawai" />
+      <PageHeader
+        pageTitle="Edit Pegawai"
+        titleClass="text-[32px] dark:text-white"
+        rightContent={
+          <button
+            onClick={() => navigate("/pegawai")}
+            className="bg-gray-500 hover:bg-gray-600 text-white font-medium px-5 py-2 rounded-xl"
+          >
+            ⬅ Back
+          </button>
+        }
+      />
+
+      <div className="space-y-5 mt-4">
+        {/* ===== Data Pribadi ===== */}
+        <ComponentCard title="Form Edit Pegawai">
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label>Nama Lengkap</Label>
+                <Input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Username</Label>
+                <Input
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Email</Label>
+                <Input
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Telepon</Label>
+                <Input
+                  name="telepon"
+                  value={formData.telepon}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Divisi</Label>
+                <Input
+                  name="divisi_id"
+                  value={formData.divisi_id ?? ""}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Lokasi</Label>
+                <Input
+                  name="lokasi_id"
+                  value={formData.lokasi_id ?? ""}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Role</Label>
+                <Input
+                  name="role_id"
+                  value={formData.role_id ?? ""}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Tipe Dashboard</Label>
+                <Input
+                  name="dashboard_type"
+                  value={formData.dashboard_type}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Status</Label>
+                <Input
+                  name="status"
+                  value={formData.status ?? ""}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <Label>Company</Label>
+                <Input
+                  name="company_id"
+                  value={formData.company_id ?? ""}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={saving}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl"
+              >
+                {saving ? "Menyimpan..." : "Simpan Perubahan"}
+              </button>
+            </form>
+          )}
+        </ComponentCard>
+      </div>
+    </>
+  );
+}
