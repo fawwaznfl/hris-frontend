@@ -343,7 +343,7 @@ export default function PegawaiForm({
               <DatePicker
                 id="tgl_lahir"
                 selected={tglLahir ? new Date(tglLahir) : undefined}
-                onChange={(_: Date[], d: string) => setTglLahir(d)}
+                onChange={(value: string) => setTglLahir(value)}
               />
             </div>
             <div>
@@ -351,7 +351,7 @@ export default function PegawaiForm({
               <DatePicker
                 id="tgl_join"
                 selected={tglJoin ? new Date(tglJoin) : undefined}
-                onChange={(_: Date[], d: string) => setTglJoin(d)}
+                onChange={(value: string) => setTglJoin(value)}
               />
             </div>
             <div className="md:col-span-2">
@@ -406,11 +406,20 @@ export default function PegawaiForm({
             </div>
             <div>
               <Label>Tanggal Mulai PKWT</Label>
-              <DatePicker id="tanggal_mulai_pkwt" placeholder="Pilih tanggal" onChange={(_: Date[], d: string) => setTanggalMulaiPkwt(d)} />
+              <DatePicker
+                id="tanggal_mulai_pkwt"
+                selected={tanggalMulaiPkwt ? new Date(tanggalMulaiPkwt) : undefined}
+                onChange={(value: string) => setTanggalMulaiPkwt(value)}
+              />
+
             </div>
             <div>
               <Label>Tanggal Berakhir PKWT</Label>
-              <DatePicker id="tanggal_berakhir_pkwt" placeholder="Pilih tanggal" onChange={(_: Date[], d: string) => setTanggalBerakhirPkwt(d)} />
+              <DatePicker 
+                id="tanggal_berakhir_pkwt" 
+                placeholder="Pilih tanggal" 
+                onChange={(value: string) => setTanggalBerakhirPkwt(value)} 
+              />
             </div>
             <div>
               <Label>Nomor Rekening</Label>
@@ -422,7 +431,11 @@ export default function PegawaiForm({
             </div>
             <div>
               <Label>Masa Berlaku</Label>
-              <DatePicker id="masa_berlaku" placeholder="Pilih tanggal" onChange={(_: Date[], d: string) => setMasaBerlaku(d)} />
+              <DatePicker 
+                id="masa_berlaku" 
+                placeholder="Pilih tanggal" 
+                onChange={(value: string) => setMasaBerlaku(value)} 
+              />
             </div>
           </div>
         </ComponentCard>

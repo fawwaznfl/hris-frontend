@@ -8,6 +8,7 @@ import api from "../../api/axios";
 import { useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { forwardRef } from "react";
 import Swal from "sweetalert2";
 import { Pencil, Trash2 } from "lucide-react";
 import * as XLSX from "xlsx";
@@ -135,14 +136,21 @@ export default function Rapat() {
   const handleEdit = (row: Rapat) => navigate(`/edit-rapat/${row.id}`);
 
   // CUSTOM DATE INPUT
-  const CustomInput = ({ value, onClick }: any) => (
-    <button
-      onClick={onClick}
-      className="border px-3 py-2 rounded-lg w-40 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 hover:border-blue-500 transition-all"
-    >
-      {value || "Pilih tanggal"}
-    </button>
+  const CustomInput = forwardRef<HTMLButtonElement, any>(
+    ({ value, onClick }, ref) => (
+      <button
+        ref={ref}
+        type="button"
+        onClick={onClick}
+        className="border px-3 py-2 rounded-lg w-40 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 hover:border-blue-500 transition-all"
+      >
+        {value || "Pilih tanggal"}
+      </button>
+    )
   );
+
+  CustomInput.displayName = "CustomInput";
+
 
   // TABLE COLUMNS
   const columns: Column<Rapat>[] = [
@@ -295,7 +303,7 @@ export default function Rapat() {
                     <div className="flex flex-col">
                       <label className="text-sm font-medium mb-1 dark:text-white">Tanggal Mulai</label>
                       <DatePicker selected={startDate} 
-                      onChange={(date: Date | null) => setStartDate(date)}
+                      onChange={(date) => setStartDate(date as Date | null)}
                       dateFormat="yyyy-MM-dd" customInput={<CustomInput />} />
                     </div>
 
@@ -303,7 +311,7 @@ export default function Rapat() {
                     <div className="flex flex-col">
                       <label className="text-sm font-medium mb-1 dark:text-white">Tanggal Akhir</label>
                       <DatePicker selected={endDate} 
-                      onChange={(date: Date | null) => setEndDate(date)}
+                      onChange={(date) => setEndDate(date as Date | null)}
                       dateFormat="yyyy-MM-dd" customInput={<CustomInput />} />
                     </div>
 

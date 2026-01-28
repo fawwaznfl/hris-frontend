@@ -8,7 +8,7 @@ import DateOption = flatpickr.Options.DateOption;
 type PropsType = {
   id: string;
   mode?: "single" | "multiple" | "range" | "time";
-  onChange?: (selectedDates: Date[], dateStr: string, instance: flatpickr.Instance) => void;
+  onChange?: (value: string) => void;
   selected?: Date | null;             // ← sudah diperbaiki
   defaultDate?: DateOption | null;    // ← sudah diperbaiki
   label?: string;
@@ -38,9 +38,12 @@ export default function DatePicker({
       static: true,
       monthSelectorType: "static",
       dateFormat: "Y-m-d",
-      defaultDate: selected ?? defaultDate ?? undefined,   // FIX
-      onChange,
+      defaultDate: selected ?? defaultDate ?? undefined,
+      onChange: (_, dateStr) => {
+        onChange?.(dateStr);
+      },
     });
+
 
     return () => {
       fpInstance.current?.destroy();
