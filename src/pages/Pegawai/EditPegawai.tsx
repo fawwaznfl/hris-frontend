@@ -698,9 +698,10 @@ export default function EditPegawai() {
                   <DatePicker
                     id="tgl_lahir"
                     selected={formData.tgl_lahir ? new Date(formData.tgl_lahir) : undefined}
-                    onChange={(_: Date[], val: string) =>
+                    onChange={(val: string) =>
                       setFormData((prev) => ({ ...prev, tgl_lahir: val }))
                     }
+
                   />
                 </div>
 
@@ -774,9 +775,9 @@ export default function EditPegawai() {
                   <DatePicker
                     id="tgl_join"
                     selected={formData.tgl_join ? new Date(formData.tgl_join) : undefined}
-                    onChange={(_: Date[], val: string) =>
-                      setFormData((prev) => ({ ...prev, tgl_join: val }))
-                    }
+                    onChange={(val: string) =>
+                    setFormData((prev) => ({ ...prev, tgl_join: val }))
+                  }
                   />
                 </div>
 
@@ -937,9 +938,9 @@ export default function EditPegawai() {
                   <DatePicker
                     id="tanggal_mulai_pwkt"
                     selected={formData.tanggal_mulai_pwkt ? new Date(formData.tanggal_mulai_pwkt) : undefined}
-                    onChange={(_: Date[], val: string) =>
-                      setFormData((prev) => ({ ...prev, tanggal_mulai_pwkt: val }))
-                    }
+                    onChange={(val: string) =>
+                    setFormData((prev) => ({ ...prev, tanggal_mulai_pwkt: val }))
+                  }
                   />
                 </div>
 
@@ -948,7 +949,7 @@ export default function EditPegawai() {
                   <DatePicker
                     id="tanggal_berakhir_pwkt"
                     selected={formData.tanggal_berakhir_pwkt ? new Date(formData.tanggal_berakhir_pwkt) : undefined}
-                    onChange={(_: Date[], val: string) =>
+                    onChange={(val: string) =>
                       setFormData((prev) => ({ ...prev, tanggal_berakhir_pwkt: val }))
                     }
                   />
@@ -986,8 +987,8 @@ export default function EditPegawai() {
                     <DatePicker
                       id="masa_berlaku"
                       selected={formData.masa_berlaku ? new Date(formData.masa_berlaku) : undefined}
-                      onChange={(_: Date[], val: string) =>
-                        setFormData((prev) => ({ ...prev, masa_berlaku: val }))  // ✅ FIX INI
+                      onChange={(val: string) =>
+                        setFormData((prev) => ({ ...prev, masa_berlaku: val }))
                       }
                     />
                   </div>
