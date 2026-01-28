@@ -3,7 +3,7 @@ import PageMeta from "../../components/common/PageMeta";
 import PageHeader from "../../PageHeader";
 import ComponentCard from "../../components/common/ComponentCard";
 import api from "../../api/axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function AddDivisi() {

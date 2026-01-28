@@ -4,7 +4,7 @@ import PageHeader from "../../PageHeader";
 import ComponentCard from "../../components/common/ComponentCard";
 import { DataTable, Column } from "../../components/common/DataTable";
 import api from "../../api/axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Edit, Trash, Eye } from "lucide-react";
 

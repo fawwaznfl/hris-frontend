@@ -4,7 +4,7 @@ import PageHeader from "../../PageHeader";
 import ComponentCard from "../../components/common/ComponentCard";
 import { DataTable, Column } from "../../components/common/DataTable";
 import api from "../../api/axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import { Download, Eye } from "lucide-react";
 import { useParams } from "react-router-dom";

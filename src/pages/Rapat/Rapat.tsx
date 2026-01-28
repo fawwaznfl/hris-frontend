@@ -5,7 +5,7 @@ import ComponentCard from "../../components/common/ComponentCard";
 import { DataTable, Column } from "../../components/common/DataTable";
 import { useSearch } from "../../SearchContext";
 import api from "../../api/axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { forwardRef } from "react";

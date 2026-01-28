@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft } from "lucide-react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../../api/axios";
 import Swal from "sweetalert2";
 import BottomNav from "../../../components/common/BottomNav";

@@ -3,7 +3,7 @@ import PageMeta from "../../components/common/PageMeta";
 import PageHeader from "../../PageHeader";
 import ComponentCard from "../../components/common/ComponentCard";
 import { DataTable, Column } from "../../components/common/DataTable";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Edit, Trash, Download } from "lucide-react";
 import Swal from "sweetalert2";
 import api from "../../api/axios";

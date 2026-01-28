@@ -3,8 +3,8 @@ import { ChevronLeft, Trash2 } from "lucide-react";
 import api from "../../../api/axios";
 import Swal from "sweetalert2";
 
-import BottomNav from "../../../components/common/BottomNav"; // ⬅️ TAMBAH INI
-import { useNavigate } from "react-router";
+import BottomNav from "../../../components/common/BottomNav"; 
+import { useNavigate } from "react-router-dom";
 
 interface RowItem {
   id: number;

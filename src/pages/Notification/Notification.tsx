@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { getNotifications, markAsRead } from "../../api/notification";
 import PageHeader from "../../PageHeader";
 import PageMeta from "../../components/common/PageMeta";

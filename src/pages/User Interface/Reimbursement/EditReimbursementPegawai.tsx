@@ -3,7 +3,7 @@ import { ChevronLeft } from "lucide-react";
 import api from "../../../api/axios";
 import Swal from "sweetalert2";
 import BottomNav from "../../../components/common/BottomNav";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface Kategori {
   id: number;

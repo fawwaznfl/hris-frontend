@@ -4,7 +4,7 @@ import PageHeader from "../../PageHeader";
 import ComponentCard from "../../components/common/ComponentCard";
 import api from "../../api/axios";
 import Swal from "sweetalert2";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditBerita() {
   const navigate = useNavigate();
