@@ -179,7 +179,7 @@ export default function EditKontrak() {
               <label className="block text-sm font-medium mb-1 text-gray-900 dark:text-white">Tanggal Mulai</label>
               <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date: Date | null) => setStartDate(date)}
                 dateFormat="yyyy-MM-dd"
                 showMonthDropdown
                 showYearDropdown
@@ -193,7 +193,7 @@ export default function EditKontrak() {
               <label className="block text-sm font-medium mb-1 text-gray-900 dark:text-white">Tanggal Selesai</label>
               <DatePicker
                 selected={endDate}
-                onChange={(date) => setEndDate(date)}
+                onChange={(date: Date | null) => setEndDate(date)}
                 dateFormat="yyyy-MM-dd"
                 showMonthDropdown
                 showYearDropdown

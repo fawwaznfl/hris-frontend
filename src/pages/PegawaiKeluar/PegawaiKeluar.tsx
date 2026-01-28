@@ -475,7 +475,7 @@ useEffect(() => {
                                   </label>
                                   <DatePicker
                                     selected={startDate}
-                                    onChange={(date) => setStartDate(date)}
+                                    onChange={(date: Date | null) => setStartDate(date)}
                                     dateFormat="yyyy-MM-dd"
                                     showMonthDropdown
                                     showYearDropdown
@@ -490,7 +490,7 @@ useEffect(() => {
                                   </label>
                                   <DatePicker
                                     selected={endDate}
-                                    onChange={(date) => setEndDate(date)}
+                                    onChange={(date: Date | null) => setEndDate(date)}
                                     dateFormat="yyyy-MM-dd"
                                     showMonthDropdown
                                     showYearDropdown

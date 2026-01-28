@@ -570,7 +570,7 @@ export default function RekapData() {
                 <label className="text-gray-700 dark:text-gray-200">Tanggal Mulai</label>
                 <DatePicker
                     selected={startDate}
-                    onChange={(date) => setStartDate(date)}
+                    onChange={(date: Date | null) => setStartDate(date)}
                     dateFormat="yyyy-MM-dd"
                     placeholderText="Pilih tanggal mulai"
                     className=" border px-3 py-2 rounded-lg bg-white dark:bg-gray-700
@@ -583,7 +583,7 @@ export default function RekapData() {
                 <label className="text-gray-700 dark:text-gray-200">Tanggal Akhir</label>
                 <DatePicker
                     selected={endDate}
-                    onChange={(date) => setEndDate(date)}
+                    onChange={(date: Date | null) => setEndDate(date)}
                     dateFormat="yyyy-MM-dd"
                     placeholderText="Pilih tanggal akhir"
                     className=" border px-3 py-2 rounded-lg bg-white dark:bg-gray-700

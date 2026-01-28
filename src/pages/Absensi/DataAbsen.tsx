@@ -385,7 +385,7 @@ export default function DataAbsen() {
                       <label className="text-gray-700 dark:text-gray-200">Tanggal Mulai</label>
                       <DatePicker
                         selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                        onChange={(date: Date | null) => setStartDate(date)}
                         dateFormat="yyyy-MM-dd"
                         customInput={<CustomInput />}
                       />
@@ -395,7 +395,7 @@ export default function DataAbsen() {
                       <label className="text-gray-700 dark:text-gray-200">Tanggal Akhir</label>
                       <DatePicker
                         selected={endDate}
-                        onChange={(date) => setEndDate(date)}
+                        onChange={(date: Date | null) => setEndDate(date)}
                         dateFormat="yyyy-MM-dd"
                         customInput={<CustomInput />}
                       />

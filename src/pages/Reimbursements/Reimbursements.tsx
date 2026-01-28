@@ -443,7 +443,7 @@ export default function Reimbursements() {
                       <label className="mb-1 dark:text-white">Tanggal Mulai</label>
                       <DatePicker
                         selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                        onChange={(date: Date | null) => setStartDate(date)}
                         dateFormat="yyyy-MM-dd"
                         customInput={<CustomInput />}
                       />
@@ -453,7 +453,7 @@ export default function Reimbursements() {
                       <label className="mb-1 dark:text-white">Tanggal Akhir</label>
                       <DatePicker
                         selected={endDate}
-                        onChange={(date) => setEndDate(date)}
+                        onChange={(date: Date | null) => setEndDate(date)}
                         dateFormat="yyyy-MM-dd"
                         customInput={<CustomInput />}
                       />
