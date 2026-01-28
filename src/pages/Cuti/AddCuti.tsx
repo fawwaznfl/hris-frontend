@@ -243,7 +243,8 @@ export default function AddCuti() {
                   onChange={(selectedDates) =>
                     setForm({
                       ...form,
-                      tanggal_mulai: selectedDates[0] ?? null,
+                      tanggal_mulai: selectedDates[0] ? new Date(selectedDates[0]) : null,
+
                     })
                   }
                 />
@@ -258,7 +259,8 @@ export default function AddCuti() {
                   onChange={(selectedDates) =>
                     setForm({
                       ...form,
-                      tanggal_selesai: selectedDates[0] ?? null,
+                      tanggal_selesai: selectedDates[0] ? new Date(selectedDates[0]) : null,
+
                     })
                   }
                 />
