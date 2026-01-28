@@ -107,14 +107,14 @@ export default function PenggajianPegawai() {
           <div className="flex gap-3">
             <DatePicker
               selected={fromDate}
-              onChange={(date) => setFromDate(date)}
+              onChange={(date: Date | null) => setFromDate(date)}
               dateFormat="yyyy-MM-dd"
               placeholderText="Tanggal Mulai"
               className="flex-1 border rounded-lg px-3 py-2 text-sm bg-gray-50"
             />
             <DatePicker
               selected={toDate}
-              onChange={(date) => setToDate(date)}
+              onChange={(date: Date | null) => setToDate(date)}
               dateFormat="yyyy-MM-dd"
               placeholderText="Tanggal Selesai"
               className="flex-1 border rounded-lg px-3 py-2 text-sm bg-gray-50"

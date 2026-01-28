@@ -303,7 +303,7 @@ export default function Rapat() {
                     <div className="flex flex-col">
                       <label className="text-sm font-medium mb-1 dark:text-white">Tanggal Mulai</label>
                       <DatePicker selected={startDate} 
-                      onChange={(date) => setStartDate(date as Date | null)}
+                      onChange={(date: Date | null) => setStartDate(date)}
                       dateFormat="yyyy-MM-dd" customInput={<CustomInput />} />
                     </div>
 
@@ -311,7 +311,7 @@ export default function Rapat() {
                     <div className="flex flex-col">
                       <label className="text-sm font-medium mb-1 dark:text-white">Tanggal Akhir</label>
                       <DatePicker selected={endDate} 
-                      onChange={(date) => setEndDate(date as Date | null)}
+                      onChange={(date: Date | null) => setEndDate(date)}
                       dateFormat="yyyy-MM-dd" customInput={<CustomInput />} />
                     </div>
 

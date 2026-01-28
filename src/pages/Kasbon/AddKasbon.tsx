@@ -363,7 +363,7 @@ export default function AddKasbon() {
               <Label>Tanggal</Label>
               <DatePicker
                 selected={form.tanggal}
-                onChange={(date) => setForm({ ...form, tanggal: date })}
+                onChange={(date: Date | null) => setForm({ ...form, tanggal: date })}
                 className="w-full border px-3 py-2 rounded 
                 text-gray-900 dark:text-gray-100
                 bg-white dark:bg-gray-800

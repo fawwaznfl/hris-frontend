@@ -423,7 +423,7 @@ export default function AddShiftMapping() {
               <Label>Tanggal Mulai</Label>
               <DatePicker
                 selected={tanggalMulai}
-                onChange={(date) => setTanggalMulai(date)}
+                onChange={(date: Date | null) => setTanggalMulai(date)}
                 dateFormat="yyyy-MM-dd"
                 className="w-full border px-3 py-2 rounded bg-white dark:bg-gray-700"
               />
@@ -436,7 +436,7 @@ export default function AddShiftMapping() {
               <Label>Tanggal Akhir</Label>
               <DatePicker
                 selected={tanggalAkhir}
-                onChange={(date) => setTanggalAkhir(date)}
+                onChange={(date: Date | null) => setTanggalAkhir(date)}
                 dateFormat="yyyy-MM-dd"
                 className="w-full border px-3 py-2 rounded bg-white dark:bg-gray-700"
               />

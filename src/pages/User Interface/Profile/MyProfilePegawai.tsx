@@ -475,7 +475,7 @@ export default function MyProfilePegawai() {
 
             <DatePicker
               selected={tanggalLahir}
-              onChange={(date) => setTanggalLahir(date)}
+              onChange={(date: Date | null) => setTanggalLahir(date)}
               dateFormat="yyyy-MM-dd"
               placeholderText="Pilih tanggal lahir"
               showYearDropdown

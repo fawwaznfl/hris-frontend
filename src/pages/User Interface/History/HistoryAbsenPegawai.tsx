@@ -195,7 +195,7 @@ export default function HistoryAbsenPegawai() {
             <div className="flex gap-3 items-center">
               <DatePicker
                 selected={fromDate}
-                onChange={(date) => setFromDate(date)}
+                onChange={(date: Date | null) => setFromDate(date)}
                 dateFormat="yyyy-MM-dd"
                 placeholderText="Dari Tanggal"
                 className="flex-1 border rounded-lg px-3 py-2 text-sm bg-gray-50"
@@ -203,7 +203,7 @@ export default function HistoryAbsenPegawai() {
 
               <DatePicker
                 selected={toDate}
-                onChange={(date) => setToDate(date)}
+                onChange={(date: Date | null) => setToDate(date)}
                 dateFormat="yyyy-MM-dd"
                 placeholderText="Sampai"
                 className="flex-1 border rounded-lg px-3 py-2 text-sm bg-gray-50"

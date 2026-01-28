@@ -350,16 +350,19 @@ export default function AddKontrak() {
               <Label htmlFor="tanggal_mulai">Tanggal Mulai</Label>
               <DatePicker
                 selected={tanggalMulai}
-                onChange={(date) => {
+                onChange={(date: Date | null) => {
                   setTanggalMulai(date);
                   setKontrak((prev) => ({
                     ...prev,
-                    tanggal_mulai: date ? date.toISOString().split("T")[0] : ""
+                    tanggal_mulai: date
+                      ? date.toISOString().split("T")[0]
+                      : "",
                   }));
                 }}
                 dateFormat="yyyy-MM-dd"
                 customInput={<CustomInput />}
               />
+
               {errors.tanggal_mulai && (
                 <p className="text-red-500">{errors.tanggal_mulai}</p>
               )}
@@ -371,16 +374,19 @@ export default function AddKontrak() {
               <Label htmlFor="tanggal_selesai">Tanggal Selesai</Label>
               <DatePicker
                 selected={tanggalSelesai}
-                onChange={(date) => {
+                onChange={(date: Date | null) => {
                   setTanggalSelesai(date);
                   setKontrak((prev) => ({
                     ...prev,
-                    tanggal_selesai: date ? date.toISOString().split("T")[0] : ""
+                    tanggal_selesai: date
+                      ? date.toISOString().split("T")[0]
+                      : "",
                   }));
                 }}
                 dateFormat="yyyy-MM-dd"
                 customInput={<CustomInput />}
               />
+
               {errors.tanggal_selesai && (
                 <p className="text-red-500">{errors.tanggal_selesai}</p>
               )}

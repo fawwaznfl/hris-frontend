@@ -7,7 +7,6 @@ import Home from "./pages/Dashboard/Home";
 import UserProfiles from "./pages/ProfilePage";
 import Calendar from "./pages/Calendar";
 import Blank from "./pages/Blank";
-import FormElements from "./pages/Forms/FormElements";
 import BasicTables from "./pages/Tables/BasicTables";
 import Alerts from "./pages/UiElements/Alerts";
 import Avatars from "./pages/UiElements/Avatars";
@@ -534,7 +533,6 @@ export default function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/blank" element={<Blank />} />
-          <Route path="/form-elements" element={<FormElements />} />
           <Route path="/basic-tables" element={<BasicTables />} />
           <Route path="/alerts" element={<Alerts />} />
           <Route path="/avatars" element={<Avatars />} />
